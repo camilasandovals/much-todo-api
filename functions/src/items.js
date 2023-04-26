@@ -14,10 +14,17 @@ export async function getAllitems(req, res) {
     res.send(itemsClean)
 }
 
-
 export async function deleteItem(req, res) {
     const { id } = req.params;
     await coll.doc(id).delete();
     res.status(202).send("Task has been deleted")
-    getAllitems(req, res)
+
 }
+
+export async function updateItem(req,res) {
+    const { id } = req.params;
+    const updateInfo = req.body
+    await coll.doc(id).update(updateInfo);
+    res.status(202).send("Task has been updated")
+}
+

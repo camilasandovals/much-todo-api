@@ -7,6 +7,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+app.post("/signup", signup)
+// app.post("/signup", signup) how would it be for login
+
+
 app.post("/items", addNewItem)
 app.get("/items", getAllitems)
 app.delete("/items/:id", deleteItem)
